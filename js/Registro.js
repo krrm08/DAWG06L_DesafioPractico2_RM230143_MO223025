@@ -1,3 +1,5 @@
+//var constats = require('../constants/constants.js')
+
 class DatosPaciente {
     constructor(nombre, FechaNacimientoPacienteimiento, DireccionPaciente, departamento, municipio, tipoDocumento, numeroDocumento, TelefonoPaciente, MotivoConsultaConsulta) {
         this.nombre = nombre;
@@ -12,26 +14,10 @@ class DatosPaciente {
     }
 }
 
-const departamentosMunicipios = {
-    "Ahuachapán": ["Ahuachapán", "Atiquizaya", "Jujutla"],
-    "Santa Ana": ["Santa Ana", "Chalchuapa", "Metapán"],
-    "Sonsonate": ["Sonsonate", "Acajutla", "Nahuizalco"],
-    "Chalatenango": ["Chalatenango", "Dulce Nombre de María", "El Paraíso"],
-    "La Libertad": ["Santa Tecla", "Antiguo Cuscatlán", "Quezaltepeque"],
-    "San Salvador": ["San Salvador", "Mejicanos", "Soyapango"],
-    "Cuscatlán": ["Cojutepeque", "Suchitoto", "San Pedro Perulapán"],
-    "La Paz": ["Zacatecoluca", "San Pedro Masahuat", "Olocuilta"],
-    "Cabañas": ["Sensuntepeque", "Ilobasco", "Victoria"],
-    "San Vicente": ["San Vicente", "Tecoluca", "Guadalupe"],
-    "Usulután": ["Usulután", "Jiquilisco", "Berlin"],
-    "San Miguel": ["San Miguel", "Chapeltique", "Chinameca"],
-    "Morazán": ["San Francisco Gotera", "Osicala", "Cacaopera"],
-    "La Unión": ["La Unión", "Santa Rosa de Lima", "El Sauce"]
-};
-
 function mostrarMunicipios() {
+    console.log(window.DEPARTAMENTO_MUNICIPIOS)
     const departamentoSeleccionado = document.getElementById('departamento').value;
-    const municipios = departamentosMunicipios[departamentoSeleccionado];
+    const municipios = window.DEPARTAMENTO_MUNICIPIOS[departamentoSeleccionado];
     const selectMunicipio = document.getElementById('Municipio');
 
     selectMunicipio.innerHTML = '';
