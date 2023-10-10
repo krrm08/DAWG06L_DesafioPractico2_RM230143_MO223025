@@ -44,7 +44,7 @@ function mostrarMunicipios() {
     });
 }
 
-window.onload = actualizarMunicipios;
+window.onload = mostrarMunicipios;
 
 function ValidarDatos() {
     const nombrePaciente = document.getElementById('NombrePaciente').value;
@@ -64,7 +64,7 @@ function ValidarDatos() {
     }
 
     if (!isNaN(nombrePaciente) || nombrePaciente.trim() === "") {
-        alert('No se permiten numeros.');
+        alert('El nombre, no permite numeros, tampoco puede quedar vacio.');
         return;
     }
 
@@ -97,34 +97,31 @@ function ValidarDatos() {
         alert('No puede dejar campos vacios.')
         return;
     }
-
+    GuardarRegistro();
     return true;
 }
 
 function GuardarRegistro() {
-    if (ValidarDatos()) {
-        const DatosPaciente = new Paciente(
-            document.getElementById('NombrePaciente').value,
-            document.getElementById('FechaNacimientoPaciente').value,
-            document.getElementById('DireccionPaciente').value,
-            document.getElementById('departamento').value,
-            document.getElementById('Municipio').value,
-            document.getElementById('TipoDocumento').value,
-            document.getElementById('DocumentoPaciente').value,
-            document.getElementById('TelefonoPaciente').value,
-            document.getElementById('MotivoConsulta').value
-        );
+
+    const datos = new DatosPaciente(
+        document.getElementById('NombrePaciente').value,
+        document.getElementById('FechaNacimientoPaciente').value,
+        document.getElementById('DireccionPaciente').value,
+        document.getElementById('departamento').value,
+        document.getElementById('Municipio').value,
+        document.getElementById('TipoDocumento').value,
+        document.getElementById('DocumentoPaciente').value,
+        document.getElementById('TelefonoPaciente').value,
+        document.getElementById('MotivoConsulta').value
+    );
 
 
-        localStorage.setItem(DatosPaciente.numeroDocumento, JSON.stringify(DatosPaciente));
+    localStorage.setItem(datos.numeroDocumento, JSON.stringify(datos));
 
-        alert('Paciente registrado exitosamente!');
-        document.Pacientes.reset();
-
-        window.location.href = "./Listado.html";
-    }
+    alert('Paciente registrado exitosamente!');
+    document.Pacientes.reset();
 }
 
 window.onload = function () {
-    actualizarMunicipios();
+    mostrarMunicipios();
 }
