@@ -13,22 +13,29 @@ function mostrarListado() {
             paciente = JSON.parse(valorAlmacenado);
         } catch (error) {
             console.warn(`El valor para la clave "${clave}" no es un JSON válido: ${valorAlmacenado}`);
-            continue; 
+            continue;
         }
 
         const divPaciente = document.createElement('div');
         divPaciente.className = 'card mb-3';
         divPaciente.innerHTML = `
-            <div class="card-header">${paciente.nombre}</div>
-            <div class="card-body">
-                <p><strong>Fecha de nacimiento:</strong> ${paciente.fechaNacimiento}</p>
-                <p><strong>Dirección:</strong> ${paciente.direccion}, ${paciente.departamento}, ${paciente.municipio}</p>
-                <p><strong>Tipo de documento:</strong> ${paciente.tipoDocumento}</p>
-                <p><strong>Número de documento:</strong> ${paciente.numeroDocumento}</p>
-                <p><strong>Teléfono:</strong> ${paciente.telefono}</p>
-                <p><strong>Motivo de consulta:</strong> ${paciente.motivoConsulta}</p>
+                <li class="list-group-item list-group-item-action">
+                <h5>${paciente.nombre}</h5>
+                <p>Fecha de nacimiento:</p>
+                <p>${paciente.FechaNacimientoPacienteimiento}</p>
+                <p>Direccion de paciente:</p>
+                <p>${paciente.DireccionPaciente}, ${paciente.departamento}, ${paciente.municipio}</p>
+                <p>Documento:</p>
+                <p>${paciente.tipoDocumento}</p>
+                <p>numero de Documento:</p>
+                <p>${paciente.numeroDocumento}</p>
+                <p>Telefono:</p>
+                <p>${paciente.TelefonoPaciente}</p>
+                <p>Motivo Consulta:</p>
+                <p>${paciente.MotivoConsultaConsulta}</p>
                 <button class="btn btn-danger" onclick="eliminarPaciente('${clave}')">Eliminar</button>
-            </div>
+                </li>
+            
         `;
 
         listado.appendChild(divPaciente);

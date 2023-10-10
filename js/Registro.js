@@ -1,14 +1,14 @@
-class Paciente {
-    constructor(nombre, fechaNacimiento, direccion, departamento, municipio, tipoDocumento, numeroDocumento, telefono, motivoConsulta) {
+class DatosPaciente {
+    constructor(nombre, FechaNacimientoPacienteimiento, DireccionPaciente, departamento, municipio, tipoDocumento, numeroDocumento, TelefonoPaciente, MotivoConsultaConsulta) {
         this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
-        this.direccion = direccion;
+        this.FechaNacimientoPacienteimiento = FechaNacimientoPacienteimiento;
+        this.DireccionPaciente = DireccionPaciente;
         this.departamento = departamento;
         this.municipio = municipio;
         this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
-        this.telefono = telefono;
-        this.motivoConsulta = motivoConsulta;
+        this.TelefonoPaciente = TelefonoPaciente;
+        this.MotivoConsultaConsulta = MotivoConsultaConsulta;
     }
 }
 
@@ -29,7 +29,7 @@ const departamentosMunicipios = {
     "La Unión": ["La Unión", "Santa Rosa de Lima", "El Sauce"]
 };
 
-function actualizarMunicipios() {
+function mostrarMunicipios() {
     const departamentoSeleccionado = document.getElementById('departamento').value;
     const municipios = departamentosMunicipios[departamentoSeleccionado];
     const selectMunicipio = document.getElementById('Municipio');
@@ -46,69 +46,77 @@ function actualizarMunicipios() {
 
 window.onload = actualizarMunicipios;
 
-function Validacion() {
+function ValidarDatos() {
     const nombrePaciente = document.getElementById('NombrePaciente').value;
-    const direccion = document.getElementById('Direccion').value;
-    const motivoConsulta = document.getElementById('Motivo').value;
-    const FechaNac = document.getElementById('FechaNac').value;
-    const Telefono = document.getElementById('Telefono').value;
-    const NumDocumento = document.getElementById('NumDocumento').value;
+    const DireccionPaciente = document.getElementById('DireccionPaciente').value;
+    const MotivoConsultaConsulta = document.getElementById('MotivoConsulta').value;
+    const FechaNacimientoPaciente = document.getElementById('FechaNacimientoPaciente').value;
+    const fechaNacObj = new Date(FechaNacimientoPaciente);
+    const fechaActual = new Date();
+    fechaActual.setHours(0, 0, 0, 0);
+    const TelefonoPaciente = document.getElementById('TelefonoPaciente').value;
+    const DocumentoPaciente = document.getElementById('DocumentoPaciente').value;
     const TipoDocumento = document.getElementById('TipoDocumento').value;
 
-    if (!isNaN(nombrePaciente) || nombrePaciente.trim() === "") {
-        alert("Debe ingresar un nombre válido para el paciente");
-        return false;
+    if (fechaNacObj > fechaActual) {
+        alert('La fecha de nacimiento no puede ser mayor a la fecha actual.');
+        return;
     }
 
-    if (direccion.trim() === "") {
-        alert("Ingrese una dirección válida")
-        return false;
+    if (!isNaN(nombrePaciente) || nombrePaciente.trim() === "") {
+        alert('No se permiten numeros.');
+        return;
+    }
+
+    if (DireccionPaciente.trim() === "") {
+        alert('Ingrese otra direccion, porfavor.')
+        return;
     }
 
     if (TipoDocumento === "DUI") {
         const duiRegex = /^\d{8}-\d{1}$/;
-        if (!duiRegex.test(NumDocumento)) {
-            alert('Por favor, ingrese un DUI válido con el formato 12345678-9.');
-            return false;
+        if (!duiRegex.test(DocumentoPaciente)) {
+            alert('Ingrese un DUI Valido (12345678-9).');
+            return;
         }
     } else {
-        const PasaporteRegex = /^\d{9}$/;
-        if (!PasaporteRegex.test(NumDocumento)) {
-            alert('Por favor, ingrese un número de pasaporte válido de 9 dígitos.');
-            return false;
+        const PasaporteRegex = /^[a-zA-Z0-9]{9}$/;
+        if (!PasaporteRegex.test(DocumentoPaciente)) {
+            alert('Ingrese un pasaporte valido.');
+            return;
         }
     }
 
-    const TelefonoRegex = /^\d{8}$/;
-    if (!TelefonoRegex.test(Telefono)) {
-        alert('Por favor, ingrese un número de teléfono válido de 8 dígitos.');
-        return false;
+    const TelefonoPacienteRegex = /^\d{8}$/;
+    if (!TelefonoPacienteRegex.test(TelefonoPaciente)) {
+        alert('Ingrese un numero de telefono valido.');
+        return;
     }
 
-    if (motivoConsulta.trim() === "") {
-        alert("Ingrese algun motivo")
-        return false;
+    if (MotivoConsultaConsulta.trim() === "") {
+        alert('No puede dejar campos vacios.')
+        return;
     }
 
     return true;
 }
 
-function GuardarPaciente() {
-    if (Validacion()) {
-        const paciente = new Paciente(
+function GuardarRegistro() {
+    if (ValidarDatos()) {
+        const DatosPaciente = new Paciente(
             document.getElementById('NombrePaciente').value,
-            document.getElementById('FechaNac').value,
-            document.getElementById('Direccion').value,
+            document.getElementById('FechaNacimientoPaciente').value,
+            document.getElementById('DireccionPaciente').value,
             document.getElementById('departamento').value,
             document.getElementById('Municipio').value,
             document.getElementById('TipoDocumento').value,
-            document.getElementById('NumDocumento').value,
-            document.getElementById('Telefono').value,
-            document.getElementById('Motivo').value
+            document.getElementById('DocumentoPaciente').value,
+            document.getElementById('TelefonoPaciente').value,
+            document.getElementById('MotivoConsulta').value
         );
 
 
-        localStorage.setItem(paciente.numeroDocumento, JSON.stringify(paciente));
+        localStorage.setItem(DatosPaciente.numeroDocumento, JSON.stringify(DatosPaciente));
 
         alert('Paciente registrado exitosamente!');
         document.Pacientes.reset();

@@ -17,15 +17,15 @@
                 <input type="text" id="NombrePaciente" required>
             </div>
             <div>
-                <label for="FechaNac">Fecha de nacimiento:</label>
-                <input type="date" id="FechaNac" required>
+                <label for="FechaNacimientoPaciente">Fecha de nacimiento:</label>
+                <input type="date" id="FechaNacimientoPaciente" required>
             </div>
             <div>
-                <label for="Direccion">Dirección:</label>
-                <input type="text" id="Direccion" placeholder="Calle y número" required>
+                <label for="DireccionPaciente">Dirección:</label>
+                <input type="text" id="DireccionPaciente" placeholder="Calle y número" required>
             </div>
             <label for="departamento">Departamento:</label>
-            <select id="departamento" onchange="actualizarMunicipios()">
+            <select id="departamento" onchange="mostrarMunicipios()">
                 <option value="Ahuachapán">Ahuachapán</option>
                 <option value="Santa Ana">Santa Ana</option>
                 <option value="Sonsonate">Sonsonate</option>
@@ -53,18 +53,18 @@
                 </select>
             </div>
             <div>
-                <label for="NumDocumento">Número de documento:</label>
-                <input type="text" id="NumDocumento" required>
+                <label for="DocumentoPaciente">Número de documento:</label>
+                <input type="text" id="DocumentoPaciente" required>
             </div>
             <div>
-                <label for="Telefono">Número de teléfono:</label>
-                <input type="tel" id="Telefono" required>
+                <label for="TelefonoPaciente">Número de teléfono:</label>
+                <input type="tel" id="TelefonoPaciente" required>
             </div>
             <div>
-                <label for="Motivo">Motivo de consulta:</label>
-                <textarea id="Motivo" rows="3" required></textarea>
+                <label for="MotivoConsulta">Motivo de consulta:</label>
+                <textarea id="MotivoConsulta" rows="3" required></textarea>
             </div>
-            <button type="button" onclick="GuardarPaciente()" id="btnRegistrar">Registrar</button>
+            <button type="button" onclick="GuardarRegistro()" id="btnRegistrar">Registrar</button>
             <a href="Listado.html" class="Listado">Ver Pacientes Registrados</a>
         </form>
     </div>
