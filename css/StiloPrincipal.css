@@ -1,0 +1,90 @@
+body {
+    background-color: #5ac251;
+    font-family: Arial, sans-serif;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #f7f7f7;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    color: #000000;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+    color: #000000;
+}
+
+a.btn-secondary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+a.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+a.Listado {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50; 
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 20px; 
+}
+
+a.Listado:hover {
+    background-color: #45a049;
+    color: #000000;
+}
